@@ -1,0 +1,29 @@
+public override bool CanDeleteChildEntity(Sungero.Domain.Client.CanExecuteChildCollectionActionArgs e)
+    {
+      if (_all == GovernmentAndAgencies.As(e.RootEntity).ExpertCouncilMember)
+      {
+        return _objs.Cast<IGovernmentAndAgencyExpertCouncilMember>().Any(x => GovernmentAndAgencies.As(e.RootEntity).State.Properties.ExpertCouncilMember.Added.Any(y => Equals(x, y)));
+      }
+
+      if (_all == GovernmentAndAgencies.As(e.RootEntity).AssociationCouncilMember)
+      {
+        return _objs.Cast<IGovernmentAndAgencyAssociationCouncilMember>().Any(x => GovernmentAndAgencies.As(e.RootEntity).State.Properties.AssociationCouncilMember.Added.Any(y => Equals(x, y)));
+      }
+      
+      if (_all == GovernmentAndAgencies.As(e.RootEntity).BoardOfTrusteesMember)
+      {
+        return _objs.Cast<IGovernmentAndAgencyBoardOfTrusteesMember>().Any(x => GovernmentAndAgencies.As(e.RootEntity).State.Properties.BoardOfTrusteesMember.Added.Any(y => Equals(x, y)));
+      }
+      
+      if (_all == GovernmentAndAgencies.As(e.RootEntity).DisciplinaryCommitteeMember)
+      {
+        return _objs.Cast<IGovernmentAndAgencyDisciplinaryCommitteeMember>().Any(x => GovernmentAndAgencies.As(e.RootEntity).State.Properties.DisciplinaryCommitteeMember.Added.Any(y => Equals(x, y)));
+      }
+      
+      if (_all == GovernmentAndAgencies.As(e.RootEntity).RegionalRepresentative)
+      {
+        return _objs.Cast<IGovernmentAndAgencyRegionalRepresentative>().Any(x => GovernmentAndAgencies.As(e.RootEntity).State.Properties.RegionalRepresentative.Added.Any(y => Equals(x, y)));
+      }
+      
+      return base.CanDeleteChildEntity(e);
+    }
